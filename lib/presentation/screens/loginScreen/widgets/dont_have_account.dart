@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../helpers/text_styles.dart';
-import '../../../router/routes.dart';
+import '../../../../helpers/text_styles.dart';
+import '../../../../router/routes.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({super.key});

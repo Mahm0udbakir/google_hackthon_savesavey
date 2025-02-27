@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:galsa_trial2/core/helpers/app_regex.dart';
-import 'package:galsa_trial2/core/helpers/spacing.dart';
-import 'package:galsa_trial2/core/widgets/app_text_form_field.dart';
-import 'package:galsa_trial2/features/signup_screen/cubit/signup_cubit.dart';
 
-import '../../../core/theming/text_styles.dart';
+import '../../../../helpers/app_regex.dart';
+import '../../../../helpers/text_styles.dart';
+import '../../../widgets/app_text_form_field.dart';
 
 class SignUpTextField extends StatefulWidget {
   const SignUpTextField({super.key});
@@ -18,11 +16,11 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
   bool isObscuredPasswordConfirmation = true;
   @override
   Widget build(BuildContext context) {
-    var cubit = SignUpCubit.get(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 40),
       child: Form(
-        key: cubit.formKey,
+        key: UniqueKey(),
         child: Column(
           children: [
             AppTextFormField(
@@ -34,9 +32,9 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
               },
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: cubit.nameController,
+              controller: TextEditingController(),
             ),
-            verticalSpacing(20),
+            const SizedBox(height: 20),
             AppTextFormField(
                 hintText: 'Email address',
                 validator: (value){
@@ -46,9 +44,9 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
                 },
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: cubit.emailController,
+              controller: TextEditingController(),
             ),
-            verticalSpacing(20),
+            const SizedBox(height: 20),
             AppTextFormField(
                 hintText: 'Phone number',
                 validator: (value){
@@ -58,9 +56,9 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
                 },
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: cubit.phoneNumberController,
+              controller: TextEditingController(),
             ),
-            verticalSpacing(20),
+            const SizedBox(height: 20),
             AppTextFormField(
                 hintText: 'Password',
                 validator: (value){
@@ -70,7 +68,7 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
                 },
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: cubit.passwordController,
+              controller: TextEditingController(),
               isObscureText: isObscuredPassword,
               suffixIcon: GestureDetector(
                 onTap: (){
@@ -84,15 +82,15 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
                 ),
               ),
             ),
-            verticalSpacing(20),
+             const SizedBox(height: 20),
             AppTextFormField(
               hintText: 'Confirm password',
               validator: (value){
-                if (value == null || value.isEmpty
-                    || !AppRegex.isPasswordValid(value) ||
-                    cubit.passwordController.text != cubit.passwordConfirmationController.text){
-                    return 'Enter a valid Password';
-                  }
+                // if (value == null || value.isEmpty
+                //     || !AppRegex.isPasswordValid(value) ||
+                //     cubit.passwordController.text != cubit.passwordConfirmationController.text){
+                //     return 'Enter a valid Password';
+                //   }
                 },
               isObscureText: isObscuredPasswordConfirmation,
               suffixIcon: GestureDetector(
@@ -108,16 +106,17 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
               ),
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: cubit.passwordConfirmationController,
+              controller:TextEditingController(),
               onFieldSubmitted: (value){
-                if(cubit.formKey.currentState!.validate()){
-                  cubit.emitSignUpState();
+                // if(cubit.formKey.currentState!.validate()){
+                //   cubit.emitSignUpState();
                 }
-              },
+
             ),
           ],
         ),
       ),
+
     );
   }
 }
