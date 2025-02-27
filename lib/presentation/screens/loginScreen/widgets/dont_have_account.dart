@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../helpers/text_styles.dart';
+import '../../../router/routes.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({super.key});
@@ -13,7 +14,7 @@ class DontHaveAccount extends StatelessWidget {
           style: TextStyles.font13BlackRegular,),
         TextButton(
           onPressed: (){
-
+            Navigator.pushReplacementNamed(context, Routes.signUpScreen);
           },
           style:const ButtonStyle(
               padding: WidgetStatePropertyAll(
