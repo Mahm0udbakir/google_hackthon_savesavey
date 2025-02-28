@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../helpers/color_manager.dart';
-import '../../helpers/text_styles.dart';
+import 'package:google_hackthon_savesavey/helpers/color_manager.dart';
+import 'package:google_hackthon_savesavey/helpers/text_styles.dart';
 
 
 class LoginButton extends StatelessWidget {
