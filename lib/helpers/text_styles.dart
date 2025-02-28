@@ -12,6 +12,11 @@ class TextStyles {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  static TextStyle font20BlackSemiBold = const TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.black,
+  );
 
   static TextStyle font22BlackBold = const TextStyle(
     fontSize: 22,
@@ -96,6 +101,12 @@ class TextStyles {
       fontSize: 20,
       color: ColorManager.darkBlue,
       fontWeight: FontWeightHelper.medium
+  );
+
+static TextStyle font30BLackSemiBold = const TextStyle(
+      fontSize: 30,
+      color: Colors.black,
+      fontWeight: FontWeightHelper.semiBold
   );
 
 }

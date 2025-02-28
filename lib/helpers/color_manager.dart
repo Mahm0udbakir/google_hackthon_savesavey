@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class ColorManager {
   static Color mainBlue = const Color(0xFF247CFF);
+
   static Color smoothGreen = const Color(0xFF03EB97);
   static Color matBlue = const Color(0xFF037EE6);
   static Color lightBlue = const Color(0xFFE3ECFF);
