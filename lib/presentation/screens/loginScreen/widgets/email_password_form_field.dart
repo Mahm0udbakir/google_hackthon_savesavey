@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/loginScreen/loginCubit/login_cubit.dart';
 
 import '../../../../helpers/app_regex.dart';
 import '../../../../helpers/text_styles.dart';
@@ -15,9 +16,7 @@ class _EmailPasswordFormFieldState extends State<EmailPasswordFormField> {
   bool isObscured = true;
   String? emailError;
   String? passwordError;
-  TextEditingController? emailController;
-  TextEditingController? passwordController;
-  var formKey = GlobalKey<FormState>();
+
 
   void updateErrorMessages(String email, String password) {
     setState(() {
@@ -34,8 +33,9 @@ class _EmailPasswordFormFieldState extends State<EmailPasswordFormField> {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = LoginCubit.get(context);
     return Form(
-      key: formKey,
+      key: cubit.formKey,
       child: Column(
         children: [
           AppTextFormField(
@@ -48,7 +48,7 @@ class _EmailPasswordFormFieldState extends State<EmailPasswordFormField> {
             },
             inputTextStyle: TextStyles.font18BlackRegular,
             backgroundColor: Colors.white,
-            controller: emailController,
+            controller: cubit.emailController,
             onChanged: (value) {},
           ),
           const SizedBox(height: 30),
@@ -61,7 +61,7 @@ class _EmailPasswordFormFieldState extends State<EmailPasswordFormField> {
               return null;
             },
             inputTextStyle: TextStyles.font18BlackRegular,
-            controller: passwordController,
+            controller: cubit.passwordController,
             backgroundColor: Colors.white,
             suffixIcon: GestureDetector(
               onTap: () {
