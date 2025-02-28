@@ -9,20 +9,25 @@ class HomeCubit extends Cubit<HomeStates> {
   static HomeCubit get(context) => BlocProvider.of(context);
 
   final GoogleVisionService visionService = GoogleVisionService();
-
   void fetchTextFromImage() async {
-    final GoogleVisionService visionService = GoogleVisionService();
+    emit(LoadingHomeState()); // Show loading state in UI
 
-    final String imageUrl =
-        "https://th.bing.com/th/id/R.967abe2a1d6ed9c7cef226817a0f3790?rik=lxBmAOvzZDeMjw&pid=ImgRaw&r=0";
+    try {
+      final String imageUrl =
+          "https://th.bing.com/th/id/R.967abe2a1d6ed9c7cef226817a0f3790?rik=lxBmAOvzZDeMjw&pid=ImgRaw&r=0";
 
-    final response = await visionService.detectTextFromImage(imageUrl);
+      final response = await visionService.detectTextFromImage(imageUrl);
 
-    if (response != null) {
-      print("Extracted Text: ${response['responses'][0]['textAnnotations'][0]['description']}");
-    } else {
-      print("Failed to extract text.");
+      if (response != null && response['responses'].isNotEmpty) {
+        final String extractedText = response['responses'][0]['textAnnotations'][0]['description'];
+        emit(SuccessHomeState(extractedText)); // Send extracted text to UI
+      } else {
+        emit(ErrorHomeState("No text found in image."));
+      }
+    } catch (e) {
+      emit(ErrorHomeState("Error: ${e.toString()}"));
     }
   }
+
 
 }
