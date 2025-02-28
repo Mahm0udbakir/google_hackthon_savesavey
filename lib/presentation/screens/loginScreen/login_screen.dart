@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../widgets/login_button.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/loginScreen/widgets/login_button.dart';
 import 'widgets/dont_have_account.dart';
 import 'widgets/email_password_form_field.dart';
 
