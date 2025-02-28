@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/bank_customer_check.dart';
 import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
 import '../../../helpers/color_manager.dart';
 import '../../../helpers/text_styles.dart';
@@ -136,7 +137,7 @@ class _BankListViewState extends State<BankListView> {
         title: Text(name, style: TextStyles.font18BlackRegular),
         trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
         onTap: () {
-          Navigator.pushReplacementNamed(context, Routes.bankCustomerCheck);
+          navigateTo(context, BankCustomerCheck() );
         },
       ),
     );

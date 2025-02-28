@@ -126,7 +126,7 @@ class CreateCCScreen extends StatelessWidget {
           ),
           trailing: Icon(statusIcon, color: statusColor),
           onTap: () {
-            navigateAndFinish(context, WorkingOn());
+            navigateTo(context, WorkingOn());
           },
         ),
       ),
