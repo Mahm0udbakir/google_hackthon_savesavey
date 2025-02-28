@@ -1,88 +1,140 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_hackthon_savesavey/business_logic/home_cubit.dart';
+import 'package:google_hackthon_savesavey/business_logic/home_states.dart';
 
-class doNotHaveAnAccountScreen extends StatelessWidget {
+class DoNotHaveAnAccountScreen extends StatelessWidget {
+  const DoNotHaveAnAccountScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return BlocProvider(
+      create: (context) => HomeCubit(),
+      child: Scaffold(
         backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: Column(
-        children: [
-          const SizedBox(height: 10),
-          const Text(
-            "Required data",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 20),
-          Center(
-            child: Stack(
-              alignment: Alignment.bottomCenter,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
               children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 4,
-                      color: Colors.transparent,
-                    ),
-                    gradient: const LinearGradient(
-                      colors: [Colors.red, Colors.blue],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('assets/bankMasr.png'),
-                    ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Required data",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  child: CircleAvatar(
-                    radius: 16,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.camera_alt,
-                      color: Colors.black,
-                      size: 18,
-                    ),
+                const SizedBox(height: 20),
+
+                /// PROFILE IMAGE WITH CAMERA ICON
+                Center(
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 4, color: Colors.transparent),
+                          gradient: const LinearGradient(
+                            colors: [Colors.red, Colors.blue],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            backgroundImage: AssetImage('assets/bankMasr.png'),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        child: GestureDetector(
+                          onTap: () {
+                            print("Profile image camera clicked");
+                            // Implement camera functionality if needed
+                          },
+                          child: const CircleAvatar(
+                            radius: 16,
+                            backgroundColor: Colors.white,
+                            child: Icon(Icons.camera_alt, color: Colors.black, size: 18),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                ),
+
+                const SizedBox(height: 20),
+
+                /// OPTIONS LIST
+                BlocConsumer<HomeCubit, HomeStates>(
+                  listener: (context, state) {
+                    if (state is SuccessHomeState) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Extracted Text: ${state.extractedText}")),
+                      );
+                    } else if (state is ErrorHomeState) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Error: ${state.error}")),
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        profileOption(
+                          "National ID Face",
+                          FontAwesomeIcons.idCard,
+                          context,
+                              () {
+                            HomeCubit.get(context).fetchTextFromImage();
+                          },
+                        ),
+                        profileOption(
+                          "National ID Back",
+                          FontAwesomeIcons.idCard,
+                          context,
+                              () {
+                            HomeCubit.get(context).fetchTextFromImage();
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              children: [
-                profileOption(
-                    "National ID Face", FontAwesomeIcons.user, context),
-                profileOption(
-                    "National ID Back", FontAwesomeIcons.bank, context),
-              ],
+
+            /// IMAGE AT THE BOTTOM
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Image.asset(
+                'assets/images/Demoid.jpeg',
+                width: 300,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-  Widget profileOption(String title, IconData icon, BuildContext context) {
+  Widget profileOption(String title, IconData icon, BuildContext context, VoidCallback onTap) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -91,7 +143,7 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
             BoxShadow(
               color: Colors.black12,
               blurRadius: 6,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -99,10 +151,10 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
           leading: Icon(icon, color: Colors.black),
           title: Text(
             title,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
-          trailing: Icon(Icons.camera_alt_rounded, color: Colors.black),
-          onTap: () {},
+          trailing: const Icon(Icons.camera_alt_rounded, color: Colors.black),
+          onTap: onTap,
         ),
       ),
     );
