@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/auth_screen.dart';
+import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
 
 import '../../../router/routes.dart';
 
@@ -34,13 +36,14 @@ class BankCustomerCheck extends StatelessWidget {
                     Expanded(
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, Routes.authScreen);
+                          navigateTo(context, AuthScreen());
                         },
                         icon: const Icon(Icons.login, color: Colors.white),
                         label: const FittedBox(
                           child: Text(
                             "Have an Account",
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                         ),
                         style: ElevatedButton.styleFrom(
@@ -56,18 +59,22 @@ class BankCustomerCheck extends StatelessWidget {
                     Expanded(
                       child: OutlinedButton.icon(
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, Routes.doNotHaveAnAccountScreen);
+                          Navigator.pushReplacementNamed(
+                              context, Routes.doNotHaveAnAccountScreen);
                         },
-                        icon: const Icon(Icons.person_add, color: Colors.blueAccent),
+                        icon: const Icon(Icons.person_add,
+                            color: Colors.blueAccent),
                         label: const FittedBox(
                           child: Text(
                             "New Customer",
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                         ),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: Colors.blueAccent,
-                          side: const BorderSide(color: Colors.blueAccent, width: 2),
+                          side: const BorderSide(
+                              color: Colors.blueAccent, width: 2),
                           padding: const EdgeInsets.symmetric(vertical: 18),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14),
