@@ -38,9 +38,9 @@ class AppRouter {
 
       case Routes.bankCustomerCheck:
         // final bankName = settings.arguments as String? ?? 'Unknown Bank';
-        return MaterialPageRoute(
-          builder: (_) => const BankCustomerCheck(),
-        );
+        // return MaterialPageRoute(
+        //   builder: (_) => const BankCustomerCheck(),
+        // );
         case Routes.authScreen:
         return MaterialPageRoute(
           builder: (_) => const AuthScreen(),
