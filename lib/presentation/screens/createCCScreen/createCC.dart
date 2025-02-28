@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/workingOn/workingOn.dart';
+import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
 
 class CreateCCScreen extends StatelessWidget {
   const CreateCCScreen({super.key});
@@ -27,10 +29,14 @@ class CreateCCScreen extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               children: [
-                CreateCardOptions("National ID Face", FontAwesomeIcons.idCard, context, "success"),
-                CreateCardOptions("National ID Back", FontAwesomeIcons.idCardClip, context, "success"),
-                CreateCardOptions("Birth Certificate", FontAwesomeIcons.fileSignature, context, "validation"),
-                CreateCardOptions("Military Recruitment Status", FontAwesomeIcons.userShield, context, "not_scanned"),
+                CreateCardOptions("National ID Face", FontAwesomeIcons.idCard,
+                    context, "success"),
+                CreateCardOptions("National ID Back",
+                    FontAwesomeIcons.idCardClip, context, "success"),
+                CreateCardOptions("Birth Certificate",
+                    FontAwesomeIcons.fileSignature, context, "validation"),
+                CreateCardOptions("Military Recruitment Status",
+                    FontAwesomeIcons.userShield, context, "not_scanned"),
               ],
             ),
           ),
@@ -77,7 +83,8 @@ class CreateCCScreen extends StatelessWidget {
     );
   }
 
-  Widget CreateCardOptions(String title, IconData icon, BuildContext context, String status) {
+  Widget CreateCardOptions(
+      String title, IconData icon, BuildContext context, String status) {
     IconData statusIcon;
     Color statusColor;
 
@@ -118,7 +125,9 @@ class CreateCCScreen extends StatelessWidget {
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           trailing: Icon(statusIcon, color: statusColor),
-          onTap: () {},
+          onTap: () {
+            navigateAndFinish(context, WorkingOn());
+          },
         ),
       ),
     );
