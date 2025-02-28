@@ -42,8 +42,7 @@ class DoNotHaveAnAccountScreen extends StatelessWidget {
                         height: 100,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border:
-                              Border.all(width: 4, color: Colors.transparent),
+                          border: Border.all(width: 4, color: Colors.transparent),
                           gradient: const LinearGradient(
                             colors: [Colors.red, Colors.blue],
                             begin: Alignment.topLeft,
@@ -68,8 +67,7 @@ class DoNotHaveAnAccountScreen extends StatelessWidget {
                           child: const CircleAvatar(
                             radius: 16,
                             backgroundColor: Colors.white,
-                            child: Icon(Icons.camera_alt,
-                                color: Colors.black, size: 18),
+                            child: Icon(Icons.camera_alt, color: Colors.black, size: 18),
                           ),
                         ),
                       ),
@@ -84,9 +82,7 @@ class DoNotHaveAnAccountScreen extends StatelessWidget {
                   listener: (context, state) {
                     if (state is SuccessHomeState) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                            content:
-                                Text("Extracted Text: ${state.extractedText}")),
+                        SnackBar(content: Text("Extracted Text: ${state.extractedText}")),
                       );
                     } else if (state is ErrorHomeState) {
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -101,7 +97,7 @@ class DoNotHaveAnAccountScreen extends StatelessWidget {
                           "National ID Face",
                           FontAwesomeIcons.idCard,
                           context,
-                          () {
+                              () {
                             HomeCubit.get(context).fetchTextFromImage();
                           },
                         ),
@@ -109,7 +105,7 @@ class DoNotHaveAnAccountScreen extends StatelessWidget {
                           "National ID Back",
                           FontAwesomeIcons.idCard,
                           context,
-                          () {
+                              () {
                             HomeCubit.get(context).fetchTextFromImage();
                           },
                         ),
@@ -121,44 +117,22 @@ class DoNotHaveAnAccountScreen extends StatelessWidget {
             ),
 
             /// IMAGE AT THE BOTTOM
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Image.asset(
-                'assets/images/Demoid.jpeg',
-                width: 300,
-                height: 150,
-                fit: BoxFit.cover,
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            /// OPTIONS LIST
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                children: [
-                  profileOption(
-                      "National ID Face", FontAwesomeIcons.idCard, context, () {
-                    print("National ID Face clicked");
-                    // Add action to open camera or navigate to another screen
-                  }),
-                  profileOption(
-                      "National ID Back", FontAwesomeIcons.idCard, context, () {
-                    print("National ID Back clicked");
-                    // Add action to open camera or navigate to another screen
-                  }),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(bottom: 20),
+            //   child: Image.asset(
+            //     'assets/images/Demoid.jpeg',
+            //     width: 300,
+            //     height: 150,
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
           ],
         ),
       ),
     );
   }
 
-  Widget profileOption(
-      String title, IconData icon, BuildContext context, VoidCallback onTap) {
+  Widget profileOption(String title, IconData icon, BuildContext context, VoidCallback onTap) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
       child: Container(

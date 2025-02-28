@@ -45,22 +45,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.location_on), label: 'Location'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_balance), label: 'Finance'),
-          BottomNavigationBarItem(icon: Icon(Icons.qr_code), label: 'Scan QR'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        selectedItemColor: ColorManager.blueDark,
-        unselectedItemColor: Colors.grey,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: ColorManager.blueDark,
+        onPressed: () {
+          // Navigate to financial services
+        },
+        child: const Icon(Icons.account_balance, color: Colors.white),
       ),
     );
   }
-//TODO Search
+
   Widget _searchTextField() {
     return TextField(
       controller: _searchController,
@@ -77,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         hintStyle: const TextStyle(color: Colors.grey, fontSize: 15),
       ),
       onChanged: (value) {
-        setState(() {}); // Triggers UI rebuild to update search results
+        setState(() {});
       },
     );
   }
@@ -140,11 +134,9 @@ class _BankListViewState extends State<BankListView> {
         title: Text(name, style: TextStyles.font18BlackRegular),
         trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
         onTap: () {
-    Navigator.pushReplacementNamed(context, Routes.bankCustomerCheck);
-
+          Navigator.pushReplacementNamed(context, Routes.bankCustomerCheck);
         },
       ),
     );
   }
-
 }
