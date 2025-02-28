@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signupCubit/signup_cubit.dart';
 import '../../../../helpers/app_regex.dart';
 import '../../../../helpers/text_styles.dart';
 import '../../../widgets/app_text_form_field.dart';
@@ -14,109 +14,93 @@ class SignUpTextField extends StatefulWidget {
 class _SignUpTextFieldState extends State<SignUpTextField> {
   bool isObscuredPassword = true;
   bool isObscuredPasswordConfirmation = true;
+
   @override
   Widget build(BuildContext context) {
-
+    var cubit = SignupCubit.get(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
       child: Form(
-        key: UniqueKey(),
+        key: cubit.formKey,
         child: Column(
           children: [
             AppTextFormField(
               hintText: 'Name',
-              validator: (value){
-                if(value == null || value.isEmpty) {
-                  return 'Enter a valid Name';
-                }
-              },
+              validator: (value) => value == null || value.isEmpty ? 'Enter a valid Name' : null,
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: TextEditingController(),
+              controller: cubit.nameController,
             ),
             const SizedBox(height: 20),
             AppTextFormField(
-                hintText: 'Email address',
-                validator: (value){
-                  if(value == null || value.isEmpty || !AppRegex.isEmailValid(value)) {
-                    return 'Enter a valid Email address';
-                  }
-                },
+              hintText: 'Email address',
+              validator: (value) =>
+              value == null || value.isEmpty || !AppRegex.isEmailValid(value)
+                  ? 'Enter a valid Email address'
+                  : null,
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: TextEditingController(),
+              controller: cubit.emailController,
             ),
             const SizedBox(height: 20),
             AppTextFormField(
-                hintText: 'Phone number',
-                validator: (value){
-                  if (value == null || value.isEmpty || !AppRegex.isPhoneValid(value)){
-                    return 'Enter a valid Phone number';
-                  }
-                },
+              hintText: 'Phone number',
+              validator: (value) =>
+              value == null || value.isEmpty || !AppRegex.isPhoneValid(value)
+                  ? 'Enter a valid Phone number'
+                  : null,
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: TextEditingController(),
+              controller: cubit.phoneController,
             ),
             const SizedBox(height: 20),
             AppTextFormField(
-                hintText: 'Password',
-                validator: (value){
-                  if (value == null || value.isEmpty || !AppRegex.isPasswordValid(value)){
-                    return 'Enter a valid Password';
-                  }
-                },
+              hintText: 'Password',
+              validator: (value) =>
+              value == null || value.isEmpty || !AppRegex.isPasswordValid(value)
+                  ? 'Enter a valid Password'
+                  : null,
               backgroundColor: Colors.white,
               inputTextStyle: TextStyles.font16BlackRegular,
-              controller: TextEditingController(),
+              controller: cubit.passwordController,
               isObscureText: isObscuredPassword,
               suffixIcon: GestureDetector(
-                onTap: (){
+                onTap: () {
                   setState(() {
                     isObscuredPassword = !isObscuredPassword;
                   });
                 },
-                child: Icon(isObscuredPassword ?
-                Icons.visibility_off :
-                Icons.visibility,
-                ),
+                child: Icon(isObscuredPassword ? Icons.visibility_off : Icons.visibility),
               ),
             ),
-             const SizedBox(height: 20),
+            const SizedBox(height: 20),
             AppTextFormField(
               hintText: 'Confirm password',
-              validator: (value){
-                // if (value == null || value.isEmpty
-                //     || !AppRegex.isPasswordValid(value) ||
-                //     cubit.passwordController.text != cubit.passwordConfirmationController.text){
-                //     return 'Enter a valid Password';
-                //   }
-                },
+              validator: (value) {
+                if (value == null ||
+                    value.isEmpty ||
+                    !AppRegex.isPasswordValid(value) ||
+                    cubit.passwordController.text != cubit.passwordConfirmationController.text) {
+                  return 'Passwords do not match';
+                }
+                return null;
+              },
+              backgroundColor: Colors.white,
+              inputTextStyle: TextStyles.font16BlackRegular,
+              controller: cubit.passwordConfirmationController,
               isObscureText: isObscuredPasswordConfirmation,
               suffixIcon: GestureDetector(
-                onTap: (){
+                onTap: () {
                   setState(() {
                     isObscuredPasswordConfirmation = !isObscuredPasswordConfirmation;
                   });
                 },
-                child: Icon(isObscuredPasswordConfirmation ?
-                Icons.visibility_off :
-                Icons.visibility,
-                ),
+                child: Icon(isObscuredPasswordConfirmation ? Icons.visibility_off : Icons.visibility),
               ),
-              backgroundColor: Colors.white,
-              inputTextStyle: TextStyles.font16BlackRegular,
-              controller:TextEditingController(),
-              onFieldSubmitted: (value){
-                // if(cubit.formKey.currentState!.validate()){
-                //   cubit.emitSignUpState();
-                }
-
             ),
           ],
         ),
       ),
-
     );
   }
 }
