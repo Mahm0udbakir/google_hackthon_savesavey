@@ -75,7 +75,9 @@ class _EmailPasswordFormFieldState extends State<EmailPasswordFormField> {
             ),
             isObscureText: isObscured,
             onChanged: (value) {},
-            onFieldSubmitted: (value) {},
+            onFieldSubmitted: (value) {
+              cubit.userLogin(context);
+            },
           ),
         ],
       ),
