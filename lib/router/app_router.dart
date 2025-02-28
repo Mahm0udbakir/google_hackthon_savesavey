@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/auth_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/bank_customer_check.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/loginScreen/loginCubit/login_cubit.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signupCubit/signup_cubit.dart';
@@ -36,6 +37,11 @@ class AppRouter {
         // final bankName = settings.arguments as String? ?? 'Unknown Bank';
         return MaterialPageRoute(
           builder: (_) => const BankCustomerCheck(),
+        );
+        case Routes.authScreen:
+        // final bankName = settings.arguments as String? ?? 'Unknown Bank';
+        return MaterialPageRoute(
+          builder: (_) => const AuthScreen(),
         );
 
       default:
