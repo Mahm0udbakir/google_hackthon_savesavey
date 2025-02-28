@@ -8,6 +8,7 @@ class BankCustomerCheck extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 50.0),
         child: Center(
@@ -54,7 +55,9 @@ class BankCustomerCheck extends StatelessWidget {
                     const SizedBox(width: 20),
                     Expanded(
                       child: OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, Routes.doNotHaveAnAccountScreen);
+                        },
                         icon: const Icon(Icons.person_add, color: Colors.blueAccent),
                         label: const FittedBox(
                           child: Text(

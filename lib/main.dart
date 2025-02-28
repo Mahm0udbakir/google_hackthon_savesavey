@@ -5,8 +5,6 @@ import 'package:google_hackthon_savesavey/save_savey_app.dart';
 
 import 'firebase_options.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -18,7 +16,5 @@ void main() async {
   } catch (e) {
     print("❌ Firebase initialization failed: $e");
   }
-  runApp(
-      SaveSaveyApp(
-          appRouter: AppRouter()));
+  runApp(SaveSaveyApp(appRouter: AppRouter()));
 }

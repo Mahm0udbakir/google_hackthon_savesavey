@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_hackthon_savesavey/helpers/text_styles.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/servicesScreen/servicesScreen.dart';
+import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
 import 'package:local_auth/local_auth.dart';
+
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -85,6 +89,18 @@ class _AuthScreenState extends State<AuthScreen> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16),
               ),
+
+            Align(
+              alignment: Alignment.center,
+
+                child: TextButton(onPressed: (){
+                  // Navigator.pushReplacementNamed(context, Routes.servicesScreen);
+                  navigateTo(context, ServicesScreen());
+                },
+                    child: Text(
+                        'Pass' ,
+                      style: TextStyles.font24BlackRegular,
+                    ))),
           ],
         ),
       ),
