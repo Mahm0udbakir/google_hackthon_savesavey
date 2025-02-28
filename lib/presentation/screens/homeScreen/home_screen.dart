@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
+import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
 import '../../../helpers/color_manager.dart';
 import '../../../helpers/text_styles.dart';
 import '../../../router/routes.dart';
@@ -48,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorManager.blueDark,
         onPressed: () {
-          // Navigate to financial services
+          navigateTo(context, ChatBotScreen());
         },
         child: const Icon(Icons.account_balance, color: Colors.white),
       ),
