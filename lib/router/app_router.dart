@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/doNotHaveAnAccountScreen/doNotHaveAnAccountScreen.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/auth_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/bank_customer_check.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/loginScreen/loginCubit/login_cubit.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/servicesScreen/servicesScreen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signupCubit/signup_cubit.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signup_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signupScreen/signup_successful_screen.dart';
@@ -37,10 +41,26 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const BankCustomerCheck(),
         );
+        case Routes.authScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AuthScreen(),
+        );
+        case Routes.doNotHaveAnAccountScreen:
+        return MaterialPageRoute(
+          builder: (_) => const DoNotHaveAnAccountScreen(),
+        );
+      case Routes.servicesScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ServicesScreen(),
+        );
+        case Routes.chatBotScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChatBotScreen(),
+        );
 
       default:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(), // or a NotFoundScreen
+          builder: (_) => const HomeScreen(),
         );
     }
   }

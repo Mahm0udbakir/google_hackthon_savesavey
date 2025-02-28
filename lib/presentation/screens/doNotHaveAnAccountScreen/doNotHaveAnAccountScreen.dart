@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class doNotHaveAnAccountScreen extends StatelessWidget {
+class DoNotHaveAnAccountScreen extends StatelessWidget {
+  const DoNotHaveAnAccountScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +23,8 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
+
+          /// PROFILE IMAGE WITH CAMERA ICON
           Center(
             child: Stack(
               alignment: Alignment.bottomCenter,
@@ -30,18 +34,15 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
                   height: 100,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(
-                      width: 4,
-                      color: Colors.transparent,
-                    ),
+                    border: Border.all(width: 4, color: Colors.transparent),
                     gradient: const LinearGradient(
                       colors: [Colors.red, Colors.blue],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(4.0),
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       backgroundImage: AssetImage('assets/bankMasr.png'),
@@ -50,28 +51,37 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 0,
-                  child: CircleAvatar(
-                    radius: 16,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.camera_alt,
-                      color: Colors.black,
-                      size: 18,
+                  child: GestureDetector(
+                    onTap: () {
+                      print("Profile image camera clicked");
+                      // Add camera functionality here
+                    },
+                    child: const CircleAvatar(
+                      radius: 16,
+                      backgroundColor: Colors.white,
+                      child: Icon(Icons.camera_alt, color: Colors.black, size: 18),
                     ),
                   ),
                 ),
               ],
             ),
           ),
+
           const SizedBox(height: 20),
+
+          /// OPTIONS LIST
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               children: [
-                profileOption(
-                    "National ID Face", FontAwesomeIcons.user, context),
-                profileOption(
-                    "National ID Back", FontAwesomeIcons.bank, context),
+                profileOption("National ID Face", FontAwesomeIcons.idCard, context, () {
+                  print("National ID Face clicked");
+                  // Add action to open camera or navigate to another screen
+                }),
+                profileOption("National ID Back", FontAwesomeIcons.idCard, context, () {
+                  print("National ID Back clicked");
+                  // Add action to open camera or navigate to another screen
+                }),
               ],
             ),
           ),
@@ -80,7 +90,7 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
     );
   }
 
-  Widget profileOption(String title, IconData icon, BuildContext context) {
+  Widget profileOption(String title, IconData icon, BuildContext context, VoidCallback onTap) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Container(
@@ -91,7 +101,7 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
             BoxShadow(
               color: Colors.black12,
               blurRadius: 6,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -99,10 +109,10 @@ class doNotHaveAnAccountScreen extends StatelessWidget {
           leading: Icon(icon, color: Colors.black),
           title: Text(
             title,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
-          trailing: Icon(Icons.camera_alt_rounded, color: Colors.black),
-          onTap: () {},
+          trailing: const Icon(Icons.camera_alt_rounded, color: Colors.black),
+          onTap: onTap,
         ),
       ),
     );
