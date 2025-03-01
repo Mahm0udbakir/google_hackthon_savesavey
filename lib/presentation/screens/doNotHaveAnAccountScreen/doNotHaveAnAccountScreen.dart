@@ -53,7 +53,7 @@ class DoNotHaveAnAccountScreen extends StatelessWidget {
                           padding: EdgeInsets.all(4.0),
                           child: CircleAvatar(
                             backgroundColor: Colors.white,
-                            backgroundImage: AssetImage('assets/bankMasr.png'),
+                            // backgroundImage: AssetImage('assets/images/bankMasr.png'),
                           ),
                         ),
                       ),

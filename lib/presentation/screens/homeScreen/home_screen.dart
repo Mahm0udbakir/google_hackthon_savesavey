@@ -4,7 +4,7 @@ import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/bank_c
 import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
 import '../../../helpers/color_manager.dart';
 import '../../../helpers/text_styles.dart';
-import '../../../router/routes.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
