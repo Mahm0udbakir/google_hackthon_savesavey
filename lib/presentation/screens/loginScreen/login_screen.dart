@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../helpers/text_styles.dart';
+import 'widgets/check_biometrics.dart';
+import 'widgets/login_bloc_listener.dart';
 import 'widgets/login_button.dart';
 import 'widgets/dont_have_account.dart';
 import 'widgets/email_password_form_field.dart';
@@ -42,6 +44,9 @@ class LoginScreen extends StatelessWidget {
 
                 // Don't have an account? Sign Up
                 const DontHaveAccount(),
+                const CheckBiometrics(),
+
+                const LoginBlocListener(),
               ],
             ),
           ),
