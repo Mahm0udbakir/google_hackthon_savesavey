@@ -27,7 +27,6 @@ class LoginCubit extends Cubit<LoginStates> {
         password: passwordController.text.trim(),
       );
       emit(LoginSuccessState());
-      // Navigator.pushReplacementNamed(context, "/homeScreen");
     } on FirebaseAuthException catch (e) {
       emit(LoginErrorState(e.message ?? "Login failed"));
     } catch (e) {
