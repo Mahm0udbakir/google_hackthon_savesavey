@@ -36,7 +36,7 @@ class ServicesScreen extends StatelessWidget {
                   context,
                       () {
                     navigateTo(context, ChatBotScreen());
-                    print("Financial assistance clicked");
+                    debugPrint("Financial assistance clicked");
                     // Add navigation or action
                   },/**/
                 ),
@@ -46,7 +46,7 @@ class ServicesScreen extends StatelessWidget {
                   context,
                       () {
                     navigateTo(context, CreateCCScreen());
-                    print("Create Credit Card clicked");
+                    debugPrint("Create Credit Card clicked");
                     // Add navigation or action
                   },
                 ),
@@ -56,7 +56,7 @@ class ServicesScreen extends StatelessWidget {
                   context,
                       () {
                         navigateTo(context, CreateCCScreen());
-                        print("Create Debit Card clicked");
+                        debugPrint("Create Debit Card clicked");
                     // Add navigation or action
                   },
                 ),
@@ -65,7 +65,7 @@ class ServicesScreen extends StatelessWidget {
                   FontAwesomeIcons.chartLine,
                   context,
                       () {
-                    print("Investments clicked");
+                        debugPrint("Investments clicked");
                     // Add navigation or action
                   },
                 ),
