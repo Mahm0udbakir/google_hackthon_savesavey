@@ -33,7 +33,7 @@ class SignupSuccessfulScreen extends StatelessWidget {
                 const SizedBox(height: 30),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, Routes.homeScreen);
+                    Navigator.pushReplacementNamed(context, Routes.bankCustomerCheck);
                   },
                   child: Text(
                     'Continue to Home',

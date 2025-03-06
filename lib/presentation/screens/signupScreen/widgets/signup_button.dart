@@ -46,7 +46,7 @@ class SignUpButton extends StatelessWidget {
                   : () {
                 if (cubit.formKey.currentState!.validate()) {
                   cubit.userSignup();
-                  Navigator.pushReplacementNamed(context, Routes.signUpSuccessfulScreen);
+                  Navigator.pushReplacementNamed(context, Routes.signupSuccessfulScreen);
                 }
               },
               child: state is SignupLoadingState
