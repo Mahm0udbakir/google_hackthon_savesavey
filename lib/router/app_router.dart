@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_hackthon_savesavey/business_logic/newBankAccountCubit/new_bank_account_cubit.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/bank_customer_check.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/loginScreen/loginCubit/login_cubit.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/newCustomerScreen/new_customer_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/servicesScreen/servicesScreen.dart';
@@ -27,9 +28,13 @@ class AppRouter {
                 create: (BuildContext context) => SignupCubit(),
                 child: const SignUpScreen()));
 
-      case Routes.signUpSuccessfulScreen:
+      case Routes.signupSuccessfulScreen:
         return MaterialPageRoute(
           builder: (_) => const SignupSuccessfulScreen(),
+        );
+        case Routes.bankCustomerCheck:
+        return MaterialPageRoute(
+          builder: (_) => const BankCustomerCheck(),
         );
 
       case Routes.homeScreen:
