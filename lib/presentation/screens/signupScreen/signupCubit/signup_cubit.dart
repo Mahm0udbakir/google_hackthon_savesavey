@@ -41,8 +41,8 @@ class SignupCubit extends Cubit<SignupStates> {
         createdAt: DateTime.now(),
       );
 
-      print("✅ User created: ${user.uid}");
-      print("📝 Saving user to Firestore...");
+      debugPrint("✅ User created: ${user.uid}");
+      debugPrint("📝 Saving user to Firestore...");
 
       // Save user to Firestore
       await _firestore.collection("users").doc(user.uid).set(user.toMap());

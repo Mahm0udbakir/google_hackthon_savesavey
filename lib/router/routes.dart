@@ -5,7 +5,7 @@ class Routes {
   static const String signUpSuccessfulScreen = '/signUpSuccessfulScreen';
   static const String bankCustomerCheck = '/bankCustomerCheck';
   static const String authScreen = '/authScreen';
-  static const String doNotHaveAnAccountScreen = '/doNotHaveAnAccountScreen';
+  static const String newCustomerScreen = '/newCustomerScreen';
   static const String servicesScreen = '/servicesScreen';
   static const String chatBotScreen = '/chatBotScreen';
 

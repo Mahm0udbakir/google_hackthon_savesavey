@@ -58,7 +58,7 @@ class BankCustomerCheck extends StatelessWidget {
                       child: OutlinedButton.icon(
                         onPressed: () {
                           Navigator.pushReplacementNamed(
-                              context, Routes.doNotHaveAnAccountScreen);
+                              context, Routes.newCustomerScreen);
                         },
                         icon: const Icon(Icons.person_add,
                             color: Colors.blueAccent),

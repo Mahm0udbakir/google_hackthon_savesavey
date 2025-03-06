@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_hackthon_savesavey/business_logic/newBankAccountCubit/new_bank_account_cubit.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
-import 'package:google_hackthon_savesavey/presentation/screens/doNotHaveAnAccountScreen/doNotHaveAnAccountScreen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/loginScreen/loginCubit/login_cubit.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/newCustomerScreen/new_customer_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/servicesScreen/servicesScreen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signupCubit/signup_cubit.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signup_screen.dart';
@@ -33,25 +34,17 @@ class AppRouter {
 
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-
-      case Routes.bankCustomerCheck:
-        // final bankName = settings.arguments as String? ?? 'Unknown Bank';
-        // return MaterialPageRoute(
-        //   builder: (_) => const BankCustomerCheck(),
-        // );
-        // case Routes.authScreen:
-        // return MaterialPageRoute(
-        //   builder: (_) => const AuthScreen(),
-        // );
-        case Routes.doNotHaveAnAccountScreen:
+      case Routes.newCustomerScreen:
         return MaterialPageRoute(
-          builder: (_) => const DoNotHaveAnAccountScreen(),
+          builder: (_) => BlocProvider(
+            create: (BuildContext context) => NewBankAccountCubit(),
+              child: const NewCustomerScreen()),
         );
       case Routes.servicesScreen:
         return MaterialPageRoute(
           builder: (_) => const ServicesScreen(),
         );
-        case Routes.chatBotScreen:
+      case Routes.chatBotScreen:
         return MaterialPageRoute(
           builder: (_) => const ChatBotScreen(),
         );
