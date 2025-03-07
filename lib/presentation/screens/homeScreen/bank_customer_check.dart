@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_hackthon_savesavey/presentation/screens/loginScreen/loginCubit/login_cubit.dart';
 
 import '../../../router/routes.dart';
 
@@ -34,8 +35,8 @@ class BankCustomerCheck extends StatelessWidget {
                     Expanded(
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          // navigateTo(context, AuthScreen());
-                        },
+                          Navigator.pushReplacementNamed(context, Routes.homeScreen);
+                          },
                         icon: const Icon(Icons.login, color: Colors.white),
                         label: const FittedBox(
                           child: Text(
