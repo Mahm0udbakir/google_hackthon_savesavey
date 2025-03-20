@@ -1,67 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
-import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/bank_customer_check.dart';
-import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
-import '../../../helpers/color_manager.dart';
+
 import '../../../helpers/text_styles.dart';
+import '../../widgets/components.dart';
+import 'bank_customer_check.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController _searchController = TextEditingController();
-  int _selectedIndex = 0;
-
-  final List<Widget> _screens = [
-    HomeContent(),
-    ChatBotScreen(),
-    Center(child: Text('Profile Screen', style: TextStyle(fontSize: 24))),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: _screens[_selectedIndex],
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorManager.blueDark,
-        tooltip: 'Ask AI Assistant',
-        onPressed: () {
-          navigateTo(context, ChatBotScreen());
-        },
-        child: const Icon(Icons.smart_toy, color: Colors.white), // AI-related icon
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: ColorManager.blueDark,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'ChatBot'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-      ),
-    );
-  }
-}
-
-class HomeContent extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   final TextEditingController searchController = TextEditingController();
 
-  HomeContent({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
