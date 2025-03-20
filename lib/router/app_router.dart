@@ -10,7 +10,7 @@ import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/sign
 import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signup_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signupScreen/signup_successful_screen.dart';
 import 'package:google_hackthon_savesavey/router/routes.dart';
-import '../presentation/screens/homeScreen/home_screen.dart';
+import '../presentation/layouts/home_layout.dart';
 import '../presentation/screens/loginScreen/login_screen.dart';
 
 class AppRouter {
@@ -38,7 +38,7 @@ class AppRouter {
         );
 
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const HomeLayout());
       case Routes.newCustomerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -56,7 +56,7 @@ class AppRouter {
 
       default:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => const HomeLayout(),
         );
     }
   }
