@@ -12,9 +12,5 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-
-
   runApp(SaveSaveyApp(appRouter: AppRouter()));
 }
-
-

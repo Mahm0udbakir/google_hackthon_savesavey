@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 class UserModel {
   final String uid;
   final String name;
   final String email;
   final String phone;
   final DateTime createdAt;
+
+
 
   UserModel({
     required this.uid,

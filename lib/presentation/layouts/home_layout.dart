@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_hackthon_savesavey/presentation/profileScreen/profile_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/homeScreen/home_screen.dart';
 import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
 import '../../helpers/color_manager.dart';
+import '../screens/profileScreen/profile_screen.dart';
 
 
 class HomeLayout extends StatefulWidget {
