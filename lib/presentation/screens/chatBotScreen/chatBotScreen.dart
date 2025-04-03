@@ -1,55 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:google_hackthon_savesavey/helpers/color_manager.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import '../../../data/api_services/gemini_chat_service.dart';
 
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({super.key});
 
   @override
-  _ChatBotScreenState createState() => _ChatBotScreenState();
+  ChatBotScreenState createState() => ChatBotScreenState();
 }
 
-class _ChatBotScreenState extends State<ChatBotScreen> {
+class ChatBotScreenState extends State<ChatBotScreen> with TickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
   final List<Map<String, String>> _messages = [];
+  late GeminiChatService _chatService;
+
+  bool _isSendingMessage = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+
+    final apiKey = dotenv.env['GEMINI_API_KEY'];
+    if (apiKey == null || apiKey.isEmpty) {
+      throw Exception("API_KEY is missing from .env");
+    }
+
+    _chatService = GeminiChatService(apiKey);
+  }
 
   void _sendMessage() {
     if (_controller.text.isEmpty) return;
 
     setState(() {
       _messages.add({"sender": "user", "message": _controller.text});
+      _isSendingMessage = true;
     });
 
-    String userMessage = _controller.text.toLowerCase();
+    String userMessage = _controller.text;
     _controller.clear();
 
-    Future.delayed(Duration(milliseconds: 500), () {
-      _addBotResponse(userMessage);
+    // Simulate delay for bot's response
+    Future.delayed(Duration(milliseconds: 1000), () {
+      _getBotResponse(userMessage);
     });
   }
 
-  void _addBotResponse(String userMessage) {
-    String botResponse = _generateBotResponse(userMessage);
+  Future<void> _getBotResponse(String userMessage) async {
+    String botResponse = await _chatService.getBotResponse(userMessage);
 
     setState(() {
       _messages.add({"sender": "bot", "message": botResponse});
+      _isSendingMessage = false; // Hide loading indicator after response
     });
-  }
-
-  String _generateBotResponse(String message) {
-    if (message.contains("hello") || message.contains("hi")) {
-      return "Hello! I'm your financial assistant. How can I help you manage your money today? 😊";
-    } else if (message.contains("budget")) {
-      return "A good budget starts with tracking income and expenses. Would you like tips on saving or investing?";
-    } else if (message.contains("saving")) {
-      return "It's great to save! A good rule is the 50/30/20 method: 50% needs, 30% wants, and 20% savings. Want help setting a savings goal?";
-    } else if (message.contains("investing")) {
-      return "Investing can grow your wealth over time! Consider stocks, bonds, or real estate based on your risk tolerance. Need beginner tips?";
-    } else if (message.contains("loan")) {
-      return "Loans can be useful but should be managed wisely. Are you looking for advice on personal loans or credit management?";
-    } else if (message.contains("bye")) {
-      return "Goodbye! Stay financially smart and have a great day! 👋";
-    }
-    return "I'm here to help with financial advice! Try asking about budgeting, saving, or investing.";
   }
 
   @override
@@ -57,7 +61,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Financial Assistant"),
-        backgroundColor: ColorManager.smoothGreen,
+        backgroundColor: Colors.green,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -75,14 +79,14 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                       margin: EdgeInsets.symmetric(vertical: 5),
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: isUser ? ColorManager.smoothGreen : Colors.grey[300],
+                        color: isUser ? Colors.green : Colors.grey[300],
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
                         _messages[index]["message"]!,
                         style: TextStyle(color: isUser ? Colors.white : Colors.black),
                       ),
-                    ),
+                    ).animate().fadeIn().scale(duration: 500.ms),
                   );
                 },
               ),
@@ -93,9 +97,13 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                 children: [
                   Expanded(
                     child: TextField(
+                      onSubmitted: (text) => _sendMessage(), // Trigger send on submit
                       controller: _controller,
                       decoration: InputDecoration(
-                        hintText: "Ask about budgeting, saving, investing...",
+                        hintStyle: TextStyle(
+                          fontSize: 13
+                        ),
+                        hintText: "How can I help with your finances today?",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -103,7 +111,11 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.send, color: ColorManager.smoothGreen),
+                    icon: _isSendingMessage
+                        ? CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                    )
+                        : Icon(Icons.send, color: Colors.green),
                     onPressed: _sendMessage,
                   ),
                 ],
@@ -115,4 +127,3 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     );
   }
 }
-

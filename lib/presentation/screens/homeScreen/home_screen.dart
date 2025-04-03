@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_hackthon_savesavey/data/models/user_model.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:fl_chart/fl_chart.dart'; // Import the fl_chart package
 
@@ -150,10 +149,9 @@ class HomeScreen extends StatelessWidget {
       children: [
         const Text("Spending Insights", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         const SizedBox(height: 10),
-        // Constrain the PieChart's size using a Container or SizedBox
-        Container(
-          height: 250, // Set the height for the PieChart
-          width: double.infinity, // Set width to be full-width
+        SizedBox(
+          height: 250,
+          width: double.infinity,
           child: PieChart(
             PieChartData(
               sections: sections,

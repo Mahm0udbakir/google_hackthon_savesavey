@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/chatBotScreen/chatBotScreen.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/createCCScreen/createCC.dart';
 import 'package:google_hackthon_savesavey/presentation/widgets/components.dart';
