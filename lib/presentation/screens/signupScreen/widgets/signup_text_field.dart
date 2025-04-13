@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_hackthon_savesavey/helpers/color_manager.dart';
 import 'package:google_hackthon_savesavey/presentation/screens/signUpScreen/signupCubit/signup_cubit.dart';
 import '../../../../helpers/app_regex.dart';
 import '../../../../helpers/text_styles.dart';
@@ -27,8 +28,8 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
             AppTextFormField(
               hintText: 'Name',
               validator: (value) => value == null || value.isEmpty ? 'Enter a valid Name' : null,
-              backgroundColor: Colors.white,
-              inputTextStyle: TextStyles.font16BlackRegular,
+              backgroundColor: ColorManager.gray70,
+              inputTextStyle: TextStyles.font16WhiteRegular,
               controller: cubit.nameController,
             ),
             const SizedBox(height: 20),
@@ -38,7 +39,7 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
               value == null || value.isEmpty || !AppRegex.isEmailValid(value)
                   ? 'Enter a valid Email address'
                   : null,
-              backgroundColor: Colors.white,
+              backgroundColor: ColorManager.gray70,
               inputTextStyle: TextStyles.font16BlackRegular,
               controller: cubit.emailController,
             ),
@@ -49,8 +50,8 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
               value == null || value.isEmpty || !AppRegex.isPhoneValid(value)
                   ? 'Enter a valid Phone number'
                   : null,
-              backgroundColor: Colors.white,
-              inputTextStyle: TextStyles.font16BlackRegular,
+              backgroundColor: ColorManager.gray70,
+              inputTextStyle: TextStyles.font16WhiteRegular,
               controller: cubit.phoneController,
             ),
             const SizedBox(height: 20),
@@ -60,8 +61,8 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
               value == null || value.isEmpty || !AppRegex.isPasswordValid(value)
                   ? 'Enter a valid Password'
                   : null,
-              backgroundColor: Colors.white,
-              inputTextStyle: TextStyles.font16BlackRegular,
+              backgroundColor: ColorManager.gray70,
+              inputTextStyle: TextStyles.font16WhiteRegular,
               controller: cubit.passwordController,
               isObscureText: isObscuredPassword,
               suffixIcon: GestureDetector(
@@ -85,8 +86,8 @@ class _SignUpTextFieldState extends State<SignUpTextField> {
                 }
                 return null;
               },
-              backgroundColor: Colors.white,
-              inputTextStyle: TextStyles.font16BlackRegular,
+              backgroundColor: ColorManager.gray70,
+              inputTextStyle: TextStyles.font16WhiteRegular,
               controller: cubit.passwordConfirmationController,
               isObscureText: isObscuredPasswordConfirmation,
               suffixIcon: GestureDetector(
