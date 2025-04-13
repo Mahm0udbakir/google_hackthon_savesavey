@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../helpers/text_styles.dart';
+import 'package:google_hackthon_savesavey/helpers/color_manager.dart';
 import '../../../../router/routes.dart';
 
 class DontHaveAccount extends StatelessWidget {
@@ -10,19 +10,22 @@ class DontHaveAccount extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Don\'t have an account?' ,
-          style: TextStyles.font13BlackRegular,),
+        Text(
+          'Don\'t have an account?',
+          style: TextStyle(color: Colors.white, fontSize: 15),
+        ),
         TextButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.pushReplacementNamed(context, Routes.signUpScreen);
           },
-          style:const ButtonStyle(
-              padding: WidgetStatePropertyAll(
-                  EdgeInsets.zero
-              )
-          ),
-          child: Text('Sign Up' ,
-            style: TextStyles.font13DarkBlueBold,
+          style: const ButtonStyle(
+              padding: WidgetStatePropertyAll(EdgeInsets.zero)),
+          child: Text(
+            'Sign Up',
+            style: TextStyle(
+                color: ColorManager.secondary,
+                fontSize: 15,
+                fontWeight: FontWeight.bold),
           ),
         ),
       ],

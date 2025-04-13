@@ -14,7 +14,7 @@ class LoginBlocListener extends StatelessWidget {
     return BlocListener<LoginCubit ,LoginStates>(
         listener: (context , state) {
           if(state is LoginSuccessState){
-            Navigator.pushReplacementNamed(context, Routes.bankCustomerCheck);
+            Navigator.pushReplacementNamed(context, Routes.homeScreen);
             showToast(text: 'Login Success', color: Colors.green, context: context);
           } else if (state is LoginErrorState){
             showToast(text: 'Login Failed ,Try again!', color: Colors.red, context: context);
