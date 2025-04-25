@@ -27,3 +27,28 @@ Originally built in 24 hours during the Google AI Hackathon, then expanded into 
 
 ## 📂 Project Structure
 
+```
+lib/
+│
+├── business_logic/     # BLoC, Cubit, and state management
+│
+├── data/               # Data models, repositories, and services
+│
+├── helpers/            # Utilities and constants
+│
+├── presentation/       # UI screens, widgets, and themes
+│
+├── router/             # App navigation and route management
+│
+├── firebase_options.dart  # Firebase configuration (auto-generated)
+│
+├── main.dart              # Main entry point
+│
+└── save_savey_app.dart     # App widget configuration (MaterialApp, providers, etc.)
+```
+
+---
+
+## 🛠️ Packages
+
+
