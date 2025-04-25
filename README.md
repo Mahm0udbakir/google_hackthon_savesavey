@@ -1,16 +1,29 @@
-# google_hackthon_savesavey
+# 💸 SAVE SAVEY – AI-Powered Finance Tracker 🚀
 
-A new Flutter project.
+A smart Flutter-based finance tracker app designed to help users manage expenses, monitor subscriptions, and receive AI-based financial advice.  
+Originally built in 24 hours during the Google AI Hackathon, then expanded into a complete solution for personal finance management.
 
-## Getting Started
+[🎥 Watch Demo](https://drive.google.com/file/d/1XVCya93uRgSmb3d-Fi9gjKhHTCT5Bqr8/view?usp=drive_link)
 
-This project is a starting point for a Flutter application.
+## 🌟 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔁 **Track Subscriptions & Bank Cards**  
+  Easily manage recurring payments and card activity.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🧾 **Real-Time Expense Logging**  
+  Add and view daily expenses with clear categorization.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 💬 **Gemini AI Chatbot**  
+  Chat with a built-in assistant for personalized financial advice.
+
+- 🔐 **Cloud-Based Storage**  
+  Sync data securely with Firebase Firestore.
+
+- 📊 **Budget Visualization**  
+  Monitor budget limits and gain insight into spending patterns.
+
+---
+
+
+## 📂 Project Structure
+
